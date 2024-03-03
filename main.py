@@ -27,13 +27,18 @@ def run(img_path:str=None, size:int=80) -> None:
     frame_rate = 60
     grey = greyscale.GreyScale(size)
     ascii_conv = ascii_converter.AsciiConverter()
+    time_per_frame = 1 / frame_rate
 
     if not img_path:
         for path in sort_images():
+            current_time = time.time()
 
             result = ascii_conv.convert(grey.convert(path))
             ascii_converter.AsciiConverter.print_ascii(result)
-            time.sleep(1 / frame_rate)
+            print_time = time.time()
+            diff = print_time - current_time
+            if diff < time_per_frame:
+                time.sleep(time_per_frame - diff)
             os.system("clear")
 
     else:
