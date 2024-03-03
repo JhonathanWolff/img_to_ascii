@@ -84,6 +84,7 @@ python main.py  my_img.png 300
 ## create a animation
 
 make a root folder in this directory called  *imgs*
+add each image with name "frame<NUMBER>.(jpg|png)"
 
 ```
 mkdir imgs
